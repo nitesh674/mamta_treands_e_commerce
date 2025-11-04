@@ -30,7 +30,7 @@ export default function CardProduct({ addToCart }) {
               <div
                 className="card shadow-sm border-0 rounded-3 flex-fill d-flex flex-column justify-content-between"
                 style={{ transition: "0.3s ease", minHeight: "100%" }}
-                // onClick={() => navigate(`/product/${item.id}`)}
+                
               >
                 {/* Image */}
                 <div className="p-3 bg-light d-flex align-items-center justify-content-center" style={{ height: "250px" }}>
@@ -43,7 +43,7 @@ export default function CardProduct({ addToCart }) {
                       objectFit: "contain",
 
                     }}
-
+                    onClick={() => navigate(`/product/${item.id}`)}
                   />
                 </div>
 

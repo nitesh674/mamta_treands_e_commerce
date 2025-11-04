@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function CartSection({ cart, setCart }) {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
+
   const [showAlert, setShowAlert] = useState(false);
   const [busyId, setBusyId] = useState(null); // id of item being updated/removed
   const [isClearing, setIsClearing] = useState(false);
@@ -96,6 +97,8 @@ const clearCart = () => {
                         objectFit: "contain",
                         marginRight: "15px",
                       }}
+                        onClick={() => navigate(`/product/${item.id}`)}
+                        
                     />
                     <div>
                       <h6 className="mb-1">{item.title}</h6>
