@@ -86,7 +86,7 @@ function App() {
         <Route path="/products"  element={<Products addToCart={addToCart} />} />
         <Route path="/ClientSection" element={<ClientSection />} />
         <Route path="/contact" element={<ContactUs />} />
-        <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/product/:id" element={<ProductDetail addToCart={addToCart} />} />
         {/*   <Route path="/blog" element={<Blog />} /> */}
 
         <Route path="/cart" element={<CartSection cart={cart} setCart={setCart} />} />

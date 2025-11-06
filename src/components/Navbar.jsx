@@ -103,14 +103,14 @@ export default function Navbar({ cartCount = 0 }) {
             <li className="nav-item"><Link className="nav-link" to="/" onClick={() => setIsOpen(false)}>Home</Link></li>
             <li className="nav-item"><Link className="nav-link" to="/about" onClick={() => setIsOpen(false)}>About</Link></li>
             <li className="nav-item"><Link className="nav-link" to="/products" onClick={() => setIsOpen(false)}>Products</Link></li>
-            <li className="nav-item"><Link className="nav-link" to="/blog" onClick={() => setIsOpen(false)}>Blog</Link></li>
+            {/* <li className="nav-item"><Link className="nav-link" to="/blog" onClick={() => setIsOpen(false)}>Blog</Link></li> */}
             <li className="nav-item"><Link className="nav-link" to="/ClientSection" onClick={() => setIsOpen(false)}>Testimonial</Link></li>
             <li className="nav-item"><Link className="nav-link" to="/contact" onClick={() => setIsOpen(false)}>Contact</Link></li>
           </ul>
 
           {/* Search + Cart Section */}
           <div className="d-flex  align-items-center justify-content-center gap-3 position-relative ">
-            {/* Search input (keeps your styles intact) */}
+            
             <div style={{ position: "relative", minWidth: 220 }}>
               <input
                 ref={inputRef}
@@ -120,7 +120,7 @@ export default function Navbar({ cartCount = 0 }) {
                 placeholder="Search products..."
                 className="form-control border border-danger rounded p-2"
                 style={{ width: "220px" }}
-                // onFocus={() => { /* keep suggestions when focusing */ }}
+                
               />
 
               {/* Suggestions dropdown */}

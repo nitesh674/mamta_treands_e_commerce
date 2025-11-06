@@ -4,12 +4,20 @@ import { useNavigate } from "react-router-dom";
 export default function CardProduct({ addToCart }) {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
-      .then((data) => setProducts(data))
-      .catch((err) => console.error("Product fetch error:", err));
+      .then((data) => {
+        setProducts(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Product fetch error:", err);
+        setLoading(false);
+      });
   }, []);
 
   const handleAddToCart = (item) => {
@@ -29,17 +37,10 @@ export default function CardProduct({ addToCart }) {
     } else{
       console.log("addToCart function not provided");
     }
-
-    // fetch("http://localhost:5000/api/cart/add", {
-    //   method: "POST",
-    //   credentials: "include",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(productData),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => console.log("✅ Cart synced with backend:", data))
-    //   .catch((err) => console.error("❌ Add to Cart error:", err));
   };
+
+    if (loading) return <div className="container my-5">Loading…</div>;
+  
 
 
   return (

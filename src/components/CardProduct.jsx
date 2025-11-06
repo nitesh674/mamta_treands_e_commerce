@@ -25,7 +25,7 @@ export default function CardProduct({ addToCart }) {
         </div>
 
         <div className="row justify-content-center">
-          {products.slice(0, 8).map((item) => (
+          {products.slice(0, 4).map((item) => (
             <div key={item.id} className="col-sm-6 col-md-4 col-lg-3 mb-4 d-flex">
               <div
                 className="card shadow-sm border-0 rounded-3 flex-fill d-flex flex-column justify-content-between"

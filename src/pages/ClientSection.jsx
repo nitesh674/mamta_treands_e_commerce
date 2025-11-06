@@ -31,10 +31,9 @@ export default function ClientSection() {
                   <h5>Anna Trevor</h5>
                   <h6>Customer</h6>
                   <p>
-                    Dignissimos reprehenderit repellendus nobis error quibusdam?
-                    Atque animi sint unde quis reprehenderit, et, perspiciatis,
-                    debitis totam est deserunt eius officiis ipsum ducimus ad
-                    labore modi voluptatibus accusantium sapiente nam! Quaerat.
+                    I’m really happy with the service! The team understood exactly what I
+                    needed and delivered everything on time. The design looks amazing and
+                    the website works flawlessly on all my devices.
                   </p>
                 </div>
               </div>
@@ -46,18 +45,17 @@ export default function ClientSection() {
                 <div className="img_container">
                   <div className="img-box">
                     <div className="img_box-inner">
-                      <img src={ClientImg} alt="Client" className="img-fluid" />
+                      <img src="https://i.pinimg.com/736x/2a/e6/b6/2ae6b6de48c95c7fa3f68c5a76684ada.jpg" alt="Client" className="img-fluid" />
                     </div>
                   </div>
                 </div>
                 <div className="detail-box">
-                  <h5>Anna Trevor</h5>
+                  <h5>Mi-sun</h5>
                   <h6>Customer</h6>
                   <p>
-                    Dignissimos reprehenderit repellendus nobis error quibusdam?
-                    Atque animi sint unde quis reprehenderit, et, perspiciatis,
-                    debitis totam est deserunt eius officiis ipsum ducimus ad
-                    labore modi voluptatibus accusantium sapiente nam! Quaerat.
+                    The experience was smooth from start to finish. I really appreciated
+                    how responsive and professional the team was. My site now looks
+                    modern, fast, and completely reflects my brand.
                   </p>
                 </div>
               </div>
@@ -69,18 +67,17 @@ export default function ClientSection() {
                 <div className="img_container">
                   <div className="img-box">
                     <div className="img_box-inner">
-                      <img src={ClientImg} alt="Client" className="img-fluid" />
+                      <img src="https://i.pinimg.com/736x/3c/ad/d3/3cadd3b2e98141772ee4b2954978c906.jpg" alt="Client" className="img-fluid" />
                     </div>
                   </div>
                 </div>
                 <div className="detail-box">
-                  <h5>Anna Trevor</h5>
+                  <h5>Seo-yeon</h5>
                   <h6>Customer</h6>
                   <p>
-                    Dignissimos reprehenderit repellendus nobis error quibusdam?
-                    Atque animi sint unde quis reprehenderit, et, perspiciatis,
-                    debitis totam est deserunt eius officiis ipsum ducimus ad
-                    labore modi voluptatibus accusantium sapiente nam! Quaerat.
+                    Working with them was a great decision! They quickly understood my
+                    vision and turned it into a clean, functional website. The attention
+                    to detail and support after delivery were impressive.
                   </p>
                 </div>
               </div>
