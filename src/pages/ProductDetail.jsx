@@ -1,8 +1,9 @@
 // src/pages/ProductDetail.jsx
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
-export default function ProductDetail({addToCart}) {
+export default function ProductDetail({ addToCart }) {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -28,9 +29,8 @@ export default function ProductDetail({addToCart}) {
 
   const handleAddToCart = () => {
     console.log("Adding to cart from ProductDetail:", product);
-    addToCart(product);
- 
-  }
+    if (addToCart) addToCart(product);
+  };
 
   if (loading) return <div className="container my-5">Loading…</div>;
   if (!product) return <div className="container my-5">Product not found</div>;
@@ -50,6 +50,7 @@ export default function ProductDetail({addToCart}) {
             }}
           />
         </div>
+
         <div className="col-md-6">
           <h2>{product.title}</h2>
           <p className="text-muted">{product.category}</p>
@@ -62,10 +63,50 @@ export default function ProductDetail({addToCart}) {
                 e.stopPropagation();
                 handleAddToCart(product);
               }}
-              className="btn btn-primary"
+              className="btn btn-danger text-light"
             >
               Add to Cart
             </button>
+
+            {/* Bootstrap 5 modal trigger */}
+            <button
+              type="button"
+              className="btn btn-danger text-light"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModalCenter"
+            >
+              Buy Now
+            </button>
+          </div>
+
+          {/* Bootstrap 5 modal */}
+          <div
+            className="modal fade"
+            id="exampleModalCenter"
+            tabIndex="-1"
+            aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true"
+          >
+            <div className="modal-dialog modal-dialog-centered" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="exampleModalLongTitle">
+                    Your Oder
+                  </h5>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div className="modal-body">
+                  ✅ Order placed successfully!
+                </div>
+                <div className="modal-footer">
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

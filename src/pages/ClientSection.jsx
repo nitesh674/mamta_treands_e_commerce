@@ -3,6 +3,18 @@ import ClientImg from "../assets/images/client.jpg";
 
 export default function ClientSection() {
   return (
+    <>
+     <section className="inner_page_head">
+         <div className="container_fuild">
+            <div className="row">
+               <div className="col-md-12">
+                  <div class="full">
+                     <h3>Testimonial</h3>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
     <section className="client_section layout_padding">
       <div className="container">
         {/* Heading */}
@@ -108,5 +120,6 @@ export default function ClientSection() {
         </div>
       </div>
     </section>
+    </>
   );
 }

@@ -60,11 +60,13 @@ export default function CardProduct({ addToCart }) {
                     </p>
                   </div>
 
-                  <div className="d-flex justify-content-between align-items-center mt-3">
+                  <div className="d-flex justify-content-between align-items-center mt-3"
+                    style={{display: 'flex', flexDirection: 'column'}}
+                  >
                     <h6 className="fw-bold mb-0 text-dark">${item.price}</h6>
                     <button
                       onClick={() => addToCart(item)}
-                      className="btn btn-dark text-warning px-3 py-2 rounded-1 fw-semibold"
+                      className="btn btn-danger text-light px-3 py-2 rounded-1 fw-semibold btn-box"
                       style={{ fontSize: "0.9rem" }}
                     >
                       ADD TO CART

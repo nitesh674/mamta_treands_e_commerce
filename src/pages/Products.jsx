@@ -44,7 +44,20 @@ export default function CardProduct({ addToCart }) {
 
 
   return (
+<>
+      <section className="inner_page_head">
+         <div className="container_fuild">
+            <div className="row">
+               <div className="col-md-12">
+                  <div class="full">
+                     <h3>Products</h3>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
     <section className="product_section layout_padding">
+            
       <div className="container">
         <div className="heading_container heading_center mb-5">
           <h2>
@@ -94,14 +107,16 @@ export default function CardProduct({ addToCart }) {
                     </p>
                   </div>
 
-                  <div className="d-flex justify-content-between align-items-center mt-3">
+                  <div className="d-flex justify-content-between align-items-center mt-3"
+                  style={{display: 'flex', flexDirection: 'column', gap: '10px'}}
+                  >
                     <h6 className="fw-bold mb-0 text-dark">${item.price}</h6>
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
                         handleAddToCart(item);
                       }}
-                      className="btn btn-dark text-warning px-3 py-2 rounded-1 fw-semibold"
+                      className="btn btn-danger text-light px-3 py-2 rounded-1 fw-semibold"
                       style={{ fontSize: "0.9rem" }}
                     >
                       ADD TO CART
@@ -114,5 +129,6 @@ export default function CardProduct({ addToCart }) {
         </div>
       </div>
     </section>
+    </>
   );
 }

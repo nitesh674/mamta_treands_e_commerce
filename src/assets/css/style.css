@@ -169,7 +169,16 @@ a:focus {
   .slider_section .carousel-indicators{
     margin-top: -42px !important;
   }
+  /* .arrival_section .arrival_bg_box{
+    overflow: hidden;
+  }
+  .arrival_section .arrival_bg_box img {
+    width: 61% !important;
+    height: 80%!important;
+    margin-top:22%;
+    margin-left: -8%;
 
+  } */
   .col-md-7,
   .col-lg-6 {
     width: 100%;
@@ -1035,6 +1044,31 @@ a:focus {
 .footer_section .footer-info p a {
   color: inherit;
 }
+
+
+
+.footer-links a:hover {
+  color: #000000 !important;
+  transition: 0.3s ease;
+}
+
+.footer-section {
+  background-color: #f7444e;
+  border-top: 1px solid #f7444e;
+  color: #ffffff;
+}
+
+.footer-section h5,
+.footer-section h6 {
+  color: #ffffff;
+}
+
+.footer-section p,
+.footer-section li,
+.footer-section a {
+  font-size: 0.95rem;
+}
+
 
 /*# sourceMappingURL=style.css.map */
 
