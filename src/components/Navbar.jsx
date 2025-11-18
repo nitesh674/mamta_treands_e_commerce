@@ -1,5 +1,6 @@
 // src/components/Navbar.jsx
 import React, { useState, useEffect, useRef } from "react";
+import { FaSearch } from "react-icons/fa";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/images/Brand Logo.png";
@@ -143,10 +144,9 @@ export default function Navbar({ cartCount = 0 }) {
                       className={`list-group-item list-group-item-action d-flex align-items-center ${focusedIndex === idx ? "active" : ""}`}
                       style={{ cursor: "pointer" }}
                     >
-                      {/* <img src={p.image} alt={p.title} style={{ width: 44, height: 44, objectFit: "contain", marginRight: 10 }} /> */}
                       <div style={{ fontSize: 14 }}>
-                        <div style={{ fontWeight: 600 }}>{p.title.length > 50 ? p.title.slice(0, 10) + "…" : p.title}</div>
-                        {/* <div style={{ fontSize: 12, color: "#666" }}>${p.price}</div> */}
+
+                        <div style={{ fontWeight: 600 }}>{p.title.length > 50 ? p.title.slice(0, 10) + "…" : p.title}</div>   
                       </div>
                     </li>
                   ))}
