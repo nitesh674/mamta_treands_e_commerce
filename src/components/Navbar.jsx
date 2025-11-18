@@ -144,8 +144,8 @@ export default function Navbar({ cartCount = 0 }) {
                       className={`list-group-item list-group-item-action d-flex align-items-center ${focusedIndex === idx ? "active" : ""}`}
                       style={{ cursor: "pointer" }}
                     >
-                      <div style={{ fontSize: 14 }}>
-
+                      <FaSearch size={14} style={{ color: "#555" }} />
+                      <div style={{ fontSize: 14 }} className="ms-2">
                         <div style={{ fontWeight: 600 }}>{p.title.length > 50 ? p.title.slice(0, 10) + "…" : p.title}</div>   
                       </div>
                     </li>
