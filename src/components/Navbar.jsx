@@ -35,7 +35,7 @@ export default function Navbar({ cartCount = 0 }) {
     const timeout = setTimeout(() => {
       const matches = products
         .filter((p) =>
-          (p.title || "").toLowerCase().includes(q)
+          (p.title || "").toLowerCase().startsWith(q)
         )
         .slice(0, 6); // show up to 6 suggestions
       setSuggestions(matches);
@@ -103,7 +103,6 @@ export default function Navbar({ cartCount = 0 }) {
             <li className="nav-item"><Link className="nav-link" to="/" onClick={() => setIsOpen(false)}>Home</Link></li>
             <li className="nav-item"><Link className="nav-link" to="/about" onClick={() => setIsOpen(false)}>About</Link></li>
             <li className="nav-item"><Link className="nav-link" to="/products" onClick={() => setIsOpen(false)}>Products</Link></li>
-            {/* <li className="nav-item"><Link className="nav-link" to="/blog" onClick={() => setIsOpen(false)}>Blog</Link></li> */}
             <li className="nav-item"><Link className="nav-link" to="/ClientSection" onClick={() => setIsOpen(false)}>Testimonial</Link></li>
             <li className="nav-item"><Link className="nav-link" to="/contact" onClick={() => setIsOpen(false)}>Contact</Link></li>
           </ul>
@@ -144,10 +143,10 @@ export default function Navbar({ cartCount = 0 }) {
                       className={`list-group-item list-group-item-action d-flex align-items-center ${focusedIndex === idx ? "active" : ""}`}
                       style={{ cursor: "pointer" }}
                     >
-                      <img src={p.image} alt={p.title} style={{ width: 44, height: 44, objectFit: "contain", marginRight: 10 }} />
+                      {/* <img src={p.image} alt={p.title} style={{ width: 44, height: 44, objectFit: "contain", marginRight: 10 }} /> */}
                       <div style={{ fontSize: 14 }}>
-                        <div style={{ fontWeight: 600 }}>{p.title.length > 50 ? p.title.slice(0, 50) + "…" : p.title}</div>
-                        <div style={{ fontSize: 12, color: "#666" }}>${p.price}</div>
+                        <div style={{ fontWeight: 600 }}>{p.title.length > 50 ? p.title.slice(0, 10) + "…" : p.title}</div>
+                        {/* <div style={{ fontSize: 12, color: "#666" }}>${p.price}</div> */}
                       </div>
                     </li>
                   ))}
