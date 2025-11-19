@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Audio } from "react-loader-spinner";
+import { InfinitySpin } from "react-loader-spinner";
 import { useState, useEffect } from "react";
 
 import Navbar from "./components/Navbar";
@@ -79,20 +79,19 @@ function App() {
     { loader ? (
            <div
         style={{
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          background: "#e4868593",
+            height: "100vh",
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            background: "#fff",
+            zIndex: 9999,
+            position: "fixed",
+            top: 0,
+            left: 0
         }}
       >
-           <Audio
-            height={80}
-            width={80}
-            radius={9}
-            color="white"
-            ariaLabel="audio-loading"
-          />
+            <InfinitySpin width="200" color="#DB7C7E" />
         </div>
       ) : (
       <>   
