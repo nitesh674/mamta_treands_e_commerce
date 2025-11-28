@@ -18,7 +18,6 @@ import ProductDetail from "./pages/ProductDetail";
 
 function App() {
   const [cart, setCart] = useState([]);
-  const [loader, setLoader] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
@@ -76,25 +75,6 @@ function App() {
   const cartCount = cart.reduce((s, it) => s + (it.qty || 0), 0);
   return (
     <>
-    { loader ? (
-           <div
-        style={{
-            height: "100vh",
-            width: "100%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            background: "#fff",
-            zIndex: 9999,
-            position: "fixed",
-            top: 0,
-            left: 0
-        }}
-      >
-            <InfinitySpin width="200" color="#DB7C7E" />
-        </div>
-      ) : (
-      <>   
       <Navbar cartCount={cartCount} />
       <Routes>
         <Route path="/"
@@ -116,8 +96,6 @@ function App() {
       </Routes>
       <Footer />
        </>
-    )}
-    </>
   );
 }
 
