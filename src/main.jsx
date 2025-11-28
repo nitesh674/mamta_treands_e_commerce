@@ -16,8 +16,8 @@ import "./assets/css/responsive.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-  <Loader>
-    <App />
-</Loader>
+    <Loader>
+      <App />
+    </Loader>
   </BrowserRouter>
 );
