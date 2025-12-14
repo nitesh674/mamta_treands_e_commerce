@@ -5,8 +5,15 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/images/Brand Logo.png";
 import "../assets/css/style.css";
+import {useCart} from "../context/CartContext";
 
-export default function Navbar({ cartCount = 0 }) {
+export default function Navbar() {
+  const { cart } = useCart();
+
+   const cartCount = cart.reduce(
+    (total, item) => total + (item.qty || 0),
+    0
+  );
   const [isOpen, setIsOpen] = useState(false);
   const [products, setProducts] = useState([]); // all products for client-side search
   const [query, setQuery] = useState("");
@@ -18,11 +25,13 @@ export default function Navbar({ cartCount = 0 }) {
 
   // Fetch products once (for suggestions)
   useEffect(() => {
-    fetch("http://localhost:5000/api/products")
+    fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data || []))
       .catch((err) => console.error("Failed to load products for search", err));
   }, []);
+
+  
 
   // Debounce query -> compute suggestions
   useEffect(() => {

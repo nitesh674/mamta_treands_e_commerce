@@ -25,52 +25,49 @@ function App() {
     }, 2000)
   }, []);
 
-  useEffect(() => {
-    fetch("http://localhost:5000/api/cart", { credentials: "include" })
-      .then(res => res.json())
-      .then(data => setCart(data))
-      .catch(console.error);
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/api/cart", { credentials: "include" })
+  //     .then(res => res.json())
+  //     .then(data => setCart(data))
+  //     .catch(console.error);
+  // }, []);
 
 
   const addToCart = (product) => {
     console.log("Adding to cart:", product);
-    fetch("http://localhost:5000/api/cart/add", {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "content-type": "application/json"
-      },
-      body: JSON.stringify(product)
-    })
-      .then(res => res.json())
-      .then(data => setCart(data))
-      .catch(console.error);
+    fetch("https://fakestoreapi.com/products")
+      .then((res) => res.json())
+      .then((data) => {
+        setCart(data);
+      })
+      .catch((err) => {
+        console.error("Product fetch error:", err);
+      });
   };
 
 
 
-  const updateQty = (id, qty) => {
-    fetch("http://localhost:5000/api/cart/update", {
-      method: "POST",
-      credentials: "include",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id, qty })
-    })
-      .then(res => res.json())
-      .then(data => setCart(data))
-      .catch(console.error);
-  };
+  // const updateQty = (id, qty) => {
+  //   fetch("http://localhost:5000/api/cart/update", {
+  //     method: "POST",
+  //     credentials: "include",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ id, qty })
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => setCart(data))
+  //     .catch(console.error);
+  // };
 
-  const clearCart = () => {
-    fetch("http://localhost:5000/api/cart/clear", {
-      method: "POST",
-      credentials: "include"
-    })
-      .then(res => res.json())
-      .then(data => setCart(data))
-      .catch(console.error);
-  };
+  // const clearCart = () => {
+  //   fetch("http://localhost:5000/api/cart/clear", {
+  //     method: "POST",
+  //     credentials: "include"
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => setCart(data))
+  //     .catch(console.error);
+  // };
 
   const cartCount = cart.reduce((s, it) => s + (it.qty || 0), 0);
   return (
@@ -95,7 +92,7 @@ function App() {
         <Route path="/cart" element={<CartSection cart={cart} setCart={setCart} />} />
       </Routes>
       <Footer />
-       </>
+    </>
   );
 }
 
