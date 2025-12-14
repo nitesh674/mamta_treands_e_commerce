@@ -1,4 +1,4 @@
-import SlidImages from "../assets/images/slider-bg.jpg";
+import SlidImages from "../assets/images/homevidoe.mp4";
 import './../assets/css/style.css'
 
 export default function Home() {
@@ -6,7 +6,8 @@ export default function Home() {
     <div>
       <section className="slider_section ">
         <div className="slider_bg_box">
-          <img src={SlidImages} alt="Banner" />
+          {/* <img src={SlidImages} alt="Banner" /> */}
+          <video   src={SlidImages} autoPlay muted loop></video>
         </div>
 
         <div
