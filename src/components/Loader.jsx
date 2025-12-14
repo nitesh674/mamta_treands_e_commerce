@@ -8,7 +8,7 @@ export default function Loader({ children }) {
   const loaderParentRef = useRef(null);
 
   useEffect(() => {
-    setLoader(true);  // route change hote hi loader ON
+    setLoader(true);  
 
     const timer = setTimeout(() => {
       setLoader(false); // 2 sec baad OFF

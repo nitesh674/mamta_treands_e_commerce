@@ -130,8 +130,6 @@ app.get("/api/products/:id", async (req, res) => {
 
 
 
-
-// ✅ Connect MongoDB and start server
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
