@@ -4,6 +4,7 @@ import { useCart } from "../context/CartContext";
 
 export default function CardProduct({ addToCart }) {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
     const { cart, setCart } = useCart();
   
   const navigate = useNavigate(); 
@@ -15,13 +16,16 @@ export default function CardProduct({ addToCart }) {
   // ✅ Fetch products from backend API
 
   useEffect(() => {
+    setLoading(true);
      fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
+        setLoading(false);  
       })
       .catch((err) => {
         console.error("Product fetch error:", err);
+        setLoading(false); 
       });
   }, []);
    const handleAddToCart = (item) => {
@@ -48,10 +52,19 @@ export default function CardProduct({ addToCart }) {
         );
       }
 
-      // If new product → add to array
       return [...prevCart, productData];
     });
   };
+
+  if (loading) {
+  return (
+    <div className="container my-5 text-center">
+      <div className="spinner-border text-danger" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  );
+}
 
   return (
     <section className="product_section layout_padding">

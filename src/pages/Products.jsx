@@ -79,7 +79,15 @@ export default function CardProduct({ addToCart }) {
   };
 
 
-  if (loading) return <div className="container my-5">Loading…</div>;
+   if (loading) {
+  return (
+    <div className="container my-5 text-center">
+      <div className="spinner-border text-danger" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  );
+}
 
 
 
