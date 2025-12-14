@@ -223,6 +223,14 @@ export default function CartSection({ }) {
     setTimeout(() => setShowAlert(false), 3000);
   };
 
+    const makeSlug = (title, id) => {
+  return `${title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "")}-${id}`;
+};
+
+
   // ❌ Backend removed – frontend only
   const removeFromCart = (id) => {
     setBusyId(id);
@@ -286,7 +294,7 @@ export default function CartSection({ }) {
                         marginRight: "15px",
                         cursor: "pointer",
                       }}
-                      onClick={() => navigate(`/product/${item.id}`)}
+                      onClick={() => navigate(`/product/${makeSlug(item.title, item.id)}`)}
                     />
                     <div>
                       <h6 className="mb-1">{item.title}</h6>

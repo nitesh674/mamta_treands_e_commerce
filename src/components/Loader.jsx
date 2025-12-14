@@ -12,7 +12,7 @@ export default function Loader({ children }) {
 
     const timer = setTimeout(() => {
       setLoader(false); // 2 sec baad OFF
-    }, 2000);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, [currentpath]);  // jab route change ho, loader chalega

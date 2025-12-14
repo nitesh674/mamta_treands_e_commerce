@@ -8,6 +8,15 @@ export default function CardProduct({ addToCart }) {
   const { cart, setCart } = useCart();
 
 
+    const makeSlug = (title, id) => {
+  return `${title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "")}-${id}`;
+};
+
+
+
   useEffect(() => {
     setLoading(true);
     fetch("https://fakestoreapi.com/products")
@@ -93,7 +102,7 @@ export default function CardProduct({ addToCart }) {
 
   return (
     <>
-      <section className="inner_page_head">
+      {/* <section className="inner_page_head">
         <div className="container_fuild">
           <div className="row">
             <div className="col-md-12">
@@ -103,7 +112,7 @@ export default function CardProduct({ addToCart }) {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       <section className="product_section layout_padding">
 
         <div className="container">
@@ -126,7 +135,7 @@ export default function CardProduct({ addToCart }) {
                     minHeight: "100%",
                     cursor: "pointer",
                   }}
-                  onClick={() => navigate(`/product/${item.id}`)}
+                  onClick={() => navigate(`/product/${makeSlug(item.title, item.id)}`)}
                 >
                   <div
                     className="p-3 bg-light d-flex align-items-center justify-content-center"

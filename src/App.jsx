@@ -19,11 +19,11 @@ import ProductDetail from "./pages/ProductDetail";
 function App() {
   const [cart, setCart] = useState([]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLoader(false);
-    }, 2000)
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setLoader(false);
+  //   }, 2000)
+  // }, []);
 
   // useEffect(() => {
   //   fetch("http://localhost:5000/api/cart", { credentials: "include" })
@@ -88,7 +88,7 @@ function App() {
         <Route path="/products" element={<Products addToCart={addToCart} />} />
         <Route path="/ClientSection" element={<ClientSection />} />
         <Route path="/contact" element={<ContactUs />} />
-        <Route path="/product/:id" element={<ProductDetail addToCart={addToCart} />} />
+        <Route path="/product/:slug" element={<ProductDetail addToCart={addToCart} />} />
         <Route path="/cart" element={<CartSection cart={cart} setCart={setCart} />} />
       </Routes>
       <Footer />

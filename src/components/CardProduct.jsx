@@ -13,6 +13,12 @@ export default function CardProduct({ addToCart }) {
       console.log("Cart updated in CardProduct:", cart);
     }, [cart]) 
 
+    const makeSlug = (title, id) => {
+  return `${title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "")}-${id}`;
+};
   // ✅ Fetch products from backend API
 
   useEffect(() => {
@@ -56,15 +62,7 @@ export default function CardProduct({ addToCart }) {
     });
   };
 
-  if (loading) {
-  return (
-    <div className="container my-5 text-center">
-      <div className="spinner-border text-danger" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </div>
-    </div>
-  );
-}
+  
 
   return (
     <section className="product_section layout_padding">
@@ -94,7 +92,7 @@ export default function CardProduct({ addToCart }) {
                       objectFit: "contain",
 
                     }}
-                    onClick={() => navigate(`/product/${item.id}`)}
+                    onClick={() => navigate(`/product/${makeSlug(item.title, item.id)}`)}
                   />
                 </div>
 
