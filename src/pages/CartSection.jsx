@@ -297,7 +297,7 @@ export default function CartSection({ }) {
                       onClick={() => navigate(`/product/${makeSlug(item.title, item.id)}`)}
                     />
                     <div>
-                      <h6 className="mb-1">{item.title}</h6>
+                      <h6 className="mb-1 title-truncate">{item.title}</h6>
                       <p className="mb-0">
                         ${(item.price || 0).toFixed(2)}
                       </p>
@@ -331,8 +331,12 @@ export default function CartSection({ }) {
                     onClick={() => removeFromCart(item.id)}
                     disabled={busyId === item.id}
                   >
-                    {busyId === item.id ? "Removing..." : "Remove"}
+                    {busyId === item.id ? "Removing" : "Remove"}
                   </button>
+                    <button
+                  className="btn btn-success btn-sm"
+                  onClick={handleAlert}> Buy Now
+                </button>
                 </div>
               ))
             )}
@@ -347,12 +351,7 @@ export default function CartSection({ }) {
                   {isClearing ? "Clearing..." : "Clear cart"}
                 </button>
 
-                <button
-                  className="btn btn-success"
-                  onClick={handleAlert}
-                >
-                  Buy Now
-                </button>
+              
 
                 <button
                   className="btn btn-dark"
@@ -388,13 +387,13 @@ export default function CartSection({ }) {
             <p>Items: {totalItems}</p>
             <p>Total: ${totalPrice.toFixed(2)}</p>
 
-            <button className="btn btn-secondary w-100 mt-2" disabled>
+            {/* <button className="btn btn-secondary w-100 mt-2" disabled>
               Checkout (coming soon)
             </button>
 
             <small className="text-muted">
               Add a payments integration to enable checkout.
-            </small>
+            </small> */}
           </div>
         </div>
       </div>

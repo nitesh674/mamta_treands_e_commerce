@@ -445,6 +445,12 @@ a:focus {
   
 
 }
+.title-truncate{
+  max-width: 115px;      /* adjust as needed */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 .product_section .heading_container {
   margin-bottom: 20px;
