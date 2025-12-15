@@ -8,12 +8,12 @@ export default function CardProduct({ addToCart }) {
   const { cart, setCart } = useCart();
 
 
-    const makeSlug = (title, id) => {
-  return `${title
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "")}-${id}`;
-};
+  const makeSlug = (title, id) => {
+    return `${title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)/g, "")}-${id}`;
+  };
 
 
 
@@ -88,15 +88,15 @@ export default function CardProduct({ addToCart }) {
   };
 
 
-   if (loading) {
-  return (
-    <div className="container my-5 text-center">
-      <div className="spinner-border text-danger" role="status">
-        <span className="visually-hidden">Loading...</span>
+  if (loading) {
+    return (
+      <div className="container my-5 text-center">
+        <div className="spinner-border text-danger" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
 
 
 
@@ -124,61 +124,36 @@ export default function CardProduct({ addToCart }) {
 
           <div className="row justify-content-center">
             {products.map((item) => (
-              <div
-                key={item.id}
-                className="col-sm-6 col-md-4 col-lg-3 mb-4 d-flex"
-              >
-                <div
-                  className="card shadow-sm border-0 rounded-3 flex-fill d-flex flex-column justify-content-between"
-                  style={{
-                    transition: "0.3s ease",
-                    minHeight: "100%",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => navigate(`/product/${makeSlug(item.title, item.id)}`)}
-                >
-                  <div
-                    className="p-3 bg-light d-flex align-items-center justify-content-center"
-                    style={{ height: "250px" }}
-                  >
+              <div key={item.id} className="col-6 col-md-4 col-lg-3 mb-4">
+                <div className="product-card h-100">
+
+                  {/* Image */}
+                  <div className="product-img ">
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="img-fluid"
-                      style={{
-                        maxHeight: "230px",
-                        objectFit: "contain",
-                      }}
+                      onClick={() =>
+                        navigate(`/product/${makeSlug(item.title, item.id)}`)
+                      }
                     />
                   </div>
 
-                  <div className="card-body d-flex flex-column justify-content-between">
-                    <div>
-                      <h6 className="fw-semibold text-truncate">{item.title}</h6>
-                      <p className="text-warning mb-1">
-                        <i className="bi bi-star-fill"></i>
-                        <i className="bi bi-star-fill"></i>
-                        <i className="bi bi-star-fill"></i>
-                        <i className="bi bi-star-fill"></i>
-                        <small className="text-muted">(123)</small>
-                      </p>
+                  {/* Content */}
+                  <div className="product-body">
+                    <h6 className="product-title title-truncate">{item.title}</h6>
+
+                    <div className="rating">
+                      ★★★★☆ <span>(123)</span>
                     </div>
 
-                    <div className="d-flex justify-content-between align-items-center mt-3"
-                      style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}
+                    <div className="price">${item.price}</div>
+
+                    <button
+                      className="btn btn-danger w-100 mt-2"
+                      onClick={() => handleAddToCart(item)}
                     >
-                      <h6 className="fw-bold mb-0 text-dark">${item.price}</h6>
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleAddToCart(item);
-                        }}
-                        className="btn btn-danger text-light px-3 py-2 rounded-1 fw-semibold"
-                        style={{ fontSize: "0.9rem" }}
-                      >
-                        ADD TO CART
-                      </button>
-                    </div>
+                      ADD TO CART
+                    </button>
                   </div>
                 </div>
               </div>
