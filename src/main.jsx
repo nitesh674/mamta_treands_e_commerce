@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
-import Loader from "./components/loader.jsx";
+import Loader from "./components/Loader.jsx";
 import { CartProvider } from "./context/CartContext";
 
 // Bootstrap CSS + JS (Bootstrap 5)
