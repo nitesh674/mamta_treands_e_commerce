@@ -98,7 +98,7 @@
 //                         marginRight: "15px",
 //                       }}
 //                         onClick={() => navigate(`/product/${item.id}`)}
-                        
+
 //                     />
 //                     <div>
 //                       <h6 className="mb-1">{item.title}</h6>
@@ -223,12 +223,12 @@ export default function CartSection({ }) {
     setTimeout(() => setShowAlert(false), 3000);
   };
 
-    const makeSlug = (title, id) => {
-  return `${title
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "")}-${id}`;
-};
+  const makeSlug = (title, id) => {
+    return `${title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)/g, "")}-${id}`;
+  };
 
 
   // ❌ Backend removed – frontend only
@@ -281,63 +281,71 @@ export default function CartSection({ }) {
               cart.map((item) => (
                 <div
                   key={item.id}
-                  className="d-flex align-items-center justify-content-between border-bottom py-3"
+                  className="border-bottom py-3"
                 >
-                  <div className="d-flex align-items-center">
+                  {/* Top section */}
+                  <div className="d-flex align-items-start gap-3">
                     <img
                       src={item.image}
                       alt={item.title}
-                      style={{
-                        width: "70px",
-                        height: "70px",
-                        objectFit: "contain",
-                        marginRight: "15px",
-                        cursor: "pointer",
-                      }}
-                      onClick={() => navigate(`/product/${makeSlug(item.title, item.id)}`)}
+                      className="cart-img"
+                      onClick={() =>
+                        navigate(`/product/${makeSlug(item.title, item.id)}`)
+                      }
                     />
-                    <div>
+
+                    <div className="flex-grow-1">
                       <h6 className="mb-1 title-truncate">{item.title}</h6>
-                      <p className="mb-0">
+                      <p className="mb-1 text-muted">
                         ${(item.price || 0).toFixed(2)}
                       </p>
+
+                      {/* Qty controls */}
+                      <div className="d-flex align-items-center gap-2 mt-2">
+                        <button
+                          className="btn btn-outline-secondary btn-sm"
+                          onClick={() => updateQty(item.id, -1)}
+                          disabled={busyId === item.id}
+                        >
+                          -
+                        </button>
+                        <span>{item.qty}</span>
+                        <button
+                          className="btn btn-outline-secondary btn-sm"
+                          onClick={() => updateQty(item.id, 1)}
+                          disabled={busyId === item.id}
+                        >
+                          +
+                        </button>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="d-flex align-items-center">
-                    <button
-                      className="btn btn-outline-secondary btn-sm"
-                      onClick={() => updateQty(item.id, -1)}
-                      disabled={busyId === item.id}
-                    >
-                      -
-                    </button>
-                    <span className="mx-2">{item.qty}</span>
-                    <button
-                      className="btn btn-outline-secondary btn-sm"
-                      onClick={() => updateQty(item.id, 1)}
-                      disabled={busyId === item.id}
-                    >
-                      +
-                    </button>
-                  </div>
+                  {/* Bottom actions */}
+                  <div className="d-flex justify-content-between align-items-center mt-3">
+                    <strong>
+                      ${((item.price || 0) * (item.qty || 0)).toFixed(2)}
+                    </strong>
 
-                  <div className="fw-bold">
-                    ${((item.price || 0) * (item.qty || 0)).toFixed(2)}
-                  </div>
+                    <div className="d-flex gap-2">
+                      <button
+                        className="btn btn-danger btn-sm"
+                        onClick={() => removeFromCart(item.id)}
+                        disabled={busyId === item.id}
+                      >
+                        Remove
+                      </button>
 
-                  <button
-                    className="btn btn-danger btn-sm"
-                    onClick={() => removeFromCart(item.id)}
-                    disabled={busyId === item.id}
-                  >
-                    {busyId === item.id ? "Removing" : "Remove"}
-                  </button>
-                    <button
-                  className="btn btn-success btn-sm"
-                  onClick={handleAlert}> Buy Now
-                </button>
+                      <button
+                        className="btn btn-success btn-sm"
+                        onClick={handleAlert}
+                      >
+                        Buy Now
+                      </button>
+                    </div>
+                  </div>
                 </div>
+
               ))
             )}
 
@@ -351,7 +359,7 @@ export default function CartSection({ }) {
                   {isClearing ? "Clearing..." : "Clear cart"}
                 </button>
 
-              
+
 
                 <button
                   className="btn btn-dark"
