@@ -4,129 +4,39 @@ import './../assets/css/style.css'
 export default function Home() {
   return (
     <div>
-      <section className="slider_section ">
-        <div className="slider_bg_box">
-          {/* <img src={SlidImages} alt="Banner" /> */}
-          <video   src={SlidImages} autoPlay muted loop></video>
-        </div>
+      <section className="hero-section">
+  <video
+    className="hero-video"
+    src={SlidImages}
+    autoPlay
+    muted
+    loop
+    playsInline
+  />
 
-        <div
-          id="customCarousel1"
-          className="carousel slide"
-          data-bs-ride="carousel"
-        >
-          <div className="carousel-inner">
-            <div className="carousel-item active">
-              <div className="container ">
-                <div className="row">
-                  <div className="col-md-7 col-lg-6 ">
-                    <div className="detail-box">
-                      <h1>
-                        <span>Sale 20% Off</span>
-                        <br />
-                        On Everything
-                      </h1>
-                      <p>
-                        Explicabo esse amet tempora quibusdam laudantium, laborum
-                        eaque magnam fugiat hic? Esse dicta aliquid error
-                        repudiandae earum suscipit fugiat molestias, veniam, vel
-                        architecto veritatis delectus repellat modi impedit
-                        sequi.
-                      </p>
-                      <div className="btn-box">
-                        <a href="" className="btn1">
-                          Shop Now
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+  <div className="hero-overlay"></div>
 
-            <div className="carousel-item ">
-              <div className="container ">
-                <div className="row">
-                  <div className="col-md-7 col-lg-6 ">
-                    <div className="detail-box">
-                      <h1>
-                        <span>Sale 20% Off</span>
-                        <br />
-                        On Everything
-                      </h1>
-                      <p>
-                        Explicabo esse amet tempora quibusdam laudantium, laborum
-                        eaque magnam fugiat hic? Esse dicta aliquid error
-                        repudiandae earum suscipit fugiat molestias, veniam, vel
-                        architecto veritatis delectus repellat modi impedit
-                        sequi.
-                      </p>
-                      <div className="btn-box">
-                        <a href="" className="btn1">
-                          Shop Now
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+  <div className="container hero-content">
+    <div className="row">
+      <div className="col-lg-6 col-md-8">
+        <span className="badge-sale">🔥 Sale 20% Off</span>
 
-            <div className="carousel-item">
-              <div className="container ">
-                <div className="row">
-                  <div className="col-md-7 col-lg-6 ">
-                    <div className="detail-box">
-                      <h1>
-                        <span>Sale 20% Off</span>
-                        <br />
-                        On Everything
-                      </h1>
-                      <p>
-                        Explicabo esse amet tempora quibusdam laudantium, laborum
-                        eaque magnam fugiat hic? Esse dicta aliquid error
-                        repudiandae earum suscipit fugiat molestias, veniam, vel
-                        architecto veritatis delectus repellat modi impedit
-                        sequi.
-                      </p>
-                      <div className="btn-box">
-                        <a href="" className="btn1">
-                          Shop Now
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <h1 className="hero-title">
+          On Everything <br /> You Love
+        </h1>
 
-          {/* Indicators */}
-          <div className="carousel-indicators">
-  <button
-    type="button"
-    data-bs-target="#customCarousel1"
-    data-bs-slide-to="0"
-    className="active"
-    aria-current="true"
-    aria-label="Slide 1"
-  ></button>
-  <button
-    type="button"
-    data-bs-target="#customCarousel1"
-    data-bs-slide-to="1"
-    aria-label="Slide 2"
-  ></button>
-  <button
-    type="button"
-    data-bs-target="#customCarousel1"
-    data-bs-slide-to="2"
-    aria-label="Slide 3"
-  ></button>
-</div>
+        <p className="hero-text">
+          Discover premium fashion, modern styles and everyday essentials
+          curated just for you.
+        </p>
 
-        </div>
-      </section>
+        <button className="btn hero-btn">
+          Shop Now
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
     </div>
   );
 }
