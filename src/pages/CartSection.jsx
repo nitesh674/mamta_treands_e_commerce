@@ -264,6 +264,86 @@ export default function CartSection({ }) {
     0
   );
 
+  const handleBuyNow = async (item) => {
+    try {
+      // 1️⃣ backend se order create
+      const res = await fetch("http://localhost:4000/create-order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          amount: (item.price || 0) * (item.qty || 1),
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!data.success) {
+        alert("Order creation failed");
+        return;
+      }
+
+      // 2️⃣ Razorpay options
+      const options = {
+        key: "rzp_test_RvtiF8kZT8eUy2", // 🔴 apna TEST KEY ID
+        amount: data.order.amount,
+        currency: "INR",
+        name: "Mamta Trends",
+        description: item.title,
+        image: item.image,
+        order_id: data.order.id,
+
+        handler: async function (response) {
+          // 3️⃣ verify payment
+          const verifyRes = await fetch(
+            "http://localhost:4000/verify-payment",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(response),
+            }
+          );
+
+          const verifyData = await verifyRes.json();
+
+          if (verifyData.success) {
+            setShowAlert(true);
+
+            // optional: paid item cart se hata do
+            setCart((prev) =>
+              prev.filter((cartItem) => cartItem.id !== item.id)
+            );
+
+            setTimeout(() => setShowAlert(false), 3000);
+          } else {
+            alert("Payment verification failed");
+          }
+        },
+
+        prefill: {
+          name: "Customer",
+          email: "test@email.com",
+          contact: "9999999999",
+        },
+
+        theme: {
+          color: "#28a745",
+        },
+      };
+
+      // 4️⃣ open razorpay
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong");
+    }
+  };
+
+
   return (
     <div className="container my-5">
       <h2 className="mb-4">🛒 Cart</h2>
@@ -338,7 +418,7 @@ export default function CartSection({ }) {
 
                       <button
                         className="btn btn-success btn-sm"
-                        onClick={handleAlert}
+                        onClick={() => handleBuyNow(item)}
                       >
                         Buy Now
                       </button>
