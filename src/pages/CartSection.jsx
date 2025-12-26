@@ -296,8 +296,9 @@ export default function CartSection({ }) {
 
         handler: async function (response) {
           // 3️⃣ verify payment
+        const API_URL = "https://backend-tz63.onrender.com/"
           const verifyRes = await fetch(
-            "http://localhost:4000/verify-payment",
+            `${API_URL}/verify-payment`,
             {
               method: "POST",
               headers: {
