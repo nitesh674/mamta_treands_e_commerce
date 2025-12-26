@@ -265,9 +265,10 @@ export default function CartSection({ }) {
   );
 
   const handleBuyNow = async (item) => {
+const API_URL = "https://backend-tz63.onrender.com/"
     try {
       // 1️⃣ backend se order create
-      const res = await fetch("http://localhost:4000/create-order", {
+      const res = await fetch(`${API_URL}/create-order`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -296,7 +297,7 @@ export default function CartSection({ }) {
 
         handler: async function (response) {
           // 3️⃣ verify payment
-        const API_URL = "https://backend-tz63.onrender.com/"
+        
           const verifyRes = await fetch(
             `${API_URL}/verify-payment`,
             {
