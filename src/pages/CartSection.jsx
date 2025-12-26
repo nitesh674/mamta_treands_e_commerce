@@ -265,7 +265,7 @@ export default function CartSection({ }) {
   );
 
   const handleBuyNow = async (item) => {
-const API_URL = "https://backend-tz63.onrender.com/"
+const API_URL = "https://backend-tz63.onrender.com"
     try {
       // 1️⃣ backend se order create
       const res = await fetch(`${API_URL}/create-order`, {
