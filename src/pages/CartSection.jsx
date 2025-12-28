@@ -255,6 +255,7 @@ export default function CartSection({ }) {
   const clearCart = () => {
     setIsClearing(true);
     setCart([]);
+    navigate("/");
     setTimeout(() => setIsClearing(false), 300);
   };
 
