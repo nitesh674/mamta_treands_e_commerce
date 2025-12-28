@@ -206,7 +206,7 @@
 
 
 // src/pages/CartSection.jsx
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
@@ -230,6 +230,11 @@ export default function CartSection({ }) {
       .replace(/(^-|-$)/g, "")}-${id}`;
   };
 
+  useEffect(() => {
+    if(cart.length === 0) {
+      navigate("/");
+    }
+  }), [cart];
 
   // ❌ Backend removed – frontend only
   const removeFromCart = (id) => {
